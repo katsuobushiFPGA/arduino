@@ -19,7 +19,7 @@ public class NewsMain {
 
 	public static void main(String[] args) throws Throwable {
 		StringBuilder sm = new StringBuilder();
-		Convert.initializeMap();//csvをmapに入れる
+		News.Convert.initializeMap();//csvをmapに入れる
 
 		URL url = new URL("http://feeds.reuters.com/reuters/JPBusinessNews?format=xml");
 		HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
@@ -34,7 +34,7 @@ public class NewsMain {
 			e.printStackTrace();
 		}
 		//ファイルパス
-		FileWriter f=new FileWriter("C:\\test\\test.ino");
+		FileWriter f=new FileWriter("C:\\test\\test2.ino");
 
 		// ルートの要素名になっている子ノードを取得する
 		Element root = doc.getDocumentElement();
@@ -69,7 +69,7 @@ public class NewsMain {
 
 		//ヘッドライン用のプログラム出力
 		System.out.println(connectionOutput(sl[6], sl[6].length()));
-		f.write(connectionOutput(sl[6],sl[6].length()));
+		f.write(connectionOutput(sl[8],sl[8].length()));
 
 
 
@@ -97,7 +97,7 @@ public class NewsMain {
 	public static StringBuilder convertToEm(String s){
 	StringBuilder sb = new StringBuilder();
 		for(int i=0;i<s.length();i++){
-			sb.append(Convert.toBigAsciiOne(s.charAt(i)));
+			sb.append(News.Convert.toBigAsciiOne(s.charAt(i)));
 		}
 			return sb;
 	}
@@ -128,7 +128,7 @@ public class NewsMain {
 		for(int i=0;i<target.length();i++){
 			tmp.append("static unsigned char __attribute__ ((progmem)) ");
 			tmp.append("chara"+ chara[i].toString() + "[]=");
-			tmp.append(Convert.pickUpChar(String.valueOf(target.charAt(i))));
+			tmp.append(News.Convert.pickUpChar(String.valueOf(target.charAt(i))));
 			tmp.append(";");
 			tmp.append("\r\n");
 		}
