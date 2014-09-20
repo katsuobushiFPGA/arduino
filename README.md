@@ -1,5 +1,3 @@
-arduino
-=======
 #Arduino News  
 ##sumally  
 *This is support to display a text which is news..etc.
